@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Instrumentation
 {
@@ -6,7 +7,12 @@ namespace Instrumentation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if(EventLog.SourceExists("Demo", "DESKTOP-AOV7G7T"))
+            {
+                EventLog.CreateEventSource("Demo", "Application", "DESKTOP-AOV7G7T");
+            }
+            EventLog logDemo = new EventLog("Application", "DESKTOP-AOV7G7T", "Demo");
+            logDemo.WriteEntry("Event written to application log", EventLogEntryType.Information, 234, Convert.ToInt16(3));
         }
     }
 }
