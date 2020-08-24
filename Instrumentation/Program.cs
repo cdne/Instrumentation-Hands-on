@@ -7,7 +7,7 @@ namespace Instrumentation
     {
         static void Main(string[] args)
         {
-            if(EventLog.SourceExists("Demo", "DESKTOP-AOV7G7T"))
+            if(!EventLog.SourceExists("Demo", "DESKTOP-AOV7G7T"))
             {
                 EventLog.CreateEventSource("Demo", "Application", "DESKTOP-AOV7G7T");
             }
